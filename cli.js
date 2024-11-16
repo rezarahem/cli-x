@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-import { execSync } from 'child_process';
-import { Command } from 'commander';
-import fs from 'fs';
 import inquirer from 'inquirer';
+import { Command } from 'commander';
+import { execSync } from 'child_process';
+import fs from 'fs';
 import path from 'path';
 
 const program = new Command();
@@ -11,11 +11,23 @@ const program = new Command();
 program
   .name('rahem-cli-x')
   .description('CLI to clone and configure a Next.js app')
-  .version('1.0.0');
+  .version('0.0.1');
 
 program
   .argument('<directory>', 'Directory to clone the Next.js app')
   .action(async directory => {
+    // If the directory is '.' (current directory), use the current working directory
+    if (directory === '.') {
+      directory = process.cwd();
+    } else {
+      // Otherwise, create the directory if it does not exist
+      const targetDir = path.join(process.cwd(), directory);
+      if (!fs.existsSync(targetDir)) {
+        fs.mkdirSync(targetDir, { recursive: true });
+      }
+      directory = targetDir;
+    }
+
     // Prompt the user for the title
     const { title } = await inquirer.prompt([
       {
