@@ -12,13 +12,18 @@ const program = new Command();
 program
   .name('rahem-cli-x')
   .description('CLI to clone and configure a Next.js app')
-  .version('0.0.2');
+  .version('0.0.3');
 
 program
   .argument('<directory>', 'Directory to clone the Next.js app')
   .action(async directory => {
     if (directory === '.') {
       directory = process.cwd();
+      if (fs.existsSync(path.join(directory, '.git'))) {
+        console.log(
+          `The current directory is already a Git repository. Skipping clone.`
+        );
+      }
     } else {
       const targetDir = path.join(process.cwd(), directory);
       if (!fs.existsSync(targetDir)) {
