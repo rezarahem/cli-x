@@ -1,6 +1,6 @@
 {
   "name": "@rahem/cli-x",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "cli.js",
   "type": "module",
   "bin": {
@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "commander": "^10.0.0",
-    "inquirer": "^12.1.0"
+    "inquirer": "^12.1.0",
+    "ora": "^8.1.1"
   }
 }
