@@ -1,0 +1,13 @@
+{
+  "name": "@rahem/cli-x",
+  "version": "0.0.0",
+  "main": "cli.js",
+  "type": "module",
+  "bin": {
+    "rahem-cli-x": "./cli.js"
+  },
+  "dependencies": {
+    "commander": "^10.0.0",
+    "inquirer": "^12.1.0"
+  }
+}
