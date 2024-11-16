@@ -3,24 +3,28 @@
 import { execSync } from 'child_process';
 import { Command } from 'commander';
 import fs from 'fs';
+import inquirer from 'inquirer';
 import path from 'path';
 
 const program = new Command();
 
 program
-  .name('ecom-cli')
+  .name('rahem-cli-x')
   .description('CLI to clone and configure a Next.js app')
   .version('1.0.0');
 
 program
   .argument('<directory>', 'Directory to clone the Next.js app')
-  .option(
-    '-t, --title <title>',
-    'Title to update in layout.tsx',
-    'Default Title'
-  )
-  .action((directory, options) => {
-    const { title } = options;
+  .action(async directory => {
+    // Prompt the user for the title
+    const { title } = await inquirer.prompt([
+      {
+        type: 'input',
+        name: 'title',
+        message: 'What should be the title in layout.tsx?',
+        default: 'Default Title',
+      },
+    ]);
 
     // Step 1: Clone the repository
     console.log('Cloning repository...');
