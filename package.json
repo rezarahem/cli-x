@@ -4,7 +4,10 @@
   "main": "cli.js",
   "type": "module",
   "bin": {
-    "rahem-cli-x": "./cli.js"
+    "rahem-cli-x": "cli.js"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "dependencies": {
     "commander": "^10.0.0",
