@@ -46,7 +46,7 @@ program
     const cloneSpinner = ora('Cloning repository...').start();
     try {
       execSync(
-        `git clone https://github.com/rezarahem/ecom-cli-x ${directory}`,
+        `git clone https://github.com/rahem-team/jupiter-core.git ${directory}`,
         {
           stdio: 'inherit',
         }
